@@ -64,6 +64,7 @@ namespace magasin
             string valTxtNumero = txtNumero.Text;
             string loc = txtLocalite.Text;
             string ger = txtGerant.Text;
+            bool alreadyExist = false;
 
             if(valTxtNumero == "" || loc == "" || ger == "")
             {
@@ -71,11 +72,26 @@ namespace magasin
             }
             else
             {
-                int id = int.Parse(txtNumero.Text);
+                foreach (Magasin ma in MagasinDAO.ReadAll())
+                {
+                    if(int.Parse(valTxtNumero) == ma.Id)
+                    {
+                        alreadyExist = true;
+                    }
+                }
 
-                Magasin m = new Magasin(id, loc, ger);
-                MagasinDAO.Create(m);
+                if(alreadyExist)
+                {
+                    MessageBox.Show("Un magasin portant ce numéro existe déjà");
+                }
+                else
+                {
+                    int id = int.Parse(txtNumero.Text);
 
+                    Magasin m = new Magasin(id, loc, ger);
+                    MagasinDAO.Create(m);
+                }
+                
             }
 
             
@@ -84,21 +100,34 @@ namespace magasin
 
         private void btnMaj_Click(object sender, EventArgs e)
         {
-            int id = int.Parse(txtNumero.Text);
-            string loc = txtLocalite.Text;
-            string ger = txtGerant.Text;
-
-            Magasin m = new Magasin(id, loc, ger);
-
-            bool ok = MagasinDAO.Update(m);
-            if (ok)
+            if(txtNumero.Text == "")
             {
-                MessageBox.Show("Mise à jour réalisée");
+                MessageBox.Show("Veuillez renseigner tous les champs (Numéro, Localité et Gérant");
             }
             else
             {
-                MessageBox.Show("Mise à jour échouée");
+                int id = int.Parse(txtNumero.Text);
+                string loc = txtLocalite.Text;
+                string ger = txtGerant.Text;
+
+                if (id == 0 || loc == "" || ger == "")
+                {
+                    MessageBox.Show("Veuillez renseigner tous les champs (Numéro, Localité et Gérant");
+                }
+
+                Magasin m = new Magasin(id, loc, ger);
+
+                bool ok = MagasinDAO.Update(m);
+                if (ok)
+                {
+                    MessageBox.Show("Mise à jour réalisée");
+                }
+                else
+                {
+                    MessageBox.Show("Mise à jour échouée");
+                }
             }
+            
 
 
         }
