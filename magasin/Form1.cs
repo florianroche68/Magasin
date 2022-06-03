@@ -151,5 +151,13 @@ namespace magasin
             }
 
         }
+
+        private void cboCommande_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string[] temp = cboCommande.SelectedItem.ToString().Split('-');
+            int id = int.Parse(temp[0]);
+            Commande c = CommandeDAO.getById(id);
+            MessageBox.Show(c.ToString(), "Détail de la commande n°" + id);
+        }
     }
 }
