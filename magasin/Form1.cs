@@ -17,6 +17,15 @@ namespace magasin
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            List<string> liste = CommandeDAO.GetListe();
+            foreach (string s in liste)
+            {
+                cboCommande.Items.Add(s);
+            }
+        }
+
         private void btnRechercher_Click(object sender, EventArgs e)
         {
             string valTxtNumero = txtNumero.Text;

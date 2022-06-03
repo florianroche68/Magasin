@@ -164,5 +164,28 @@ namespace magasin
             }
             return res;
         }
+
+        //Méthode qui permet de créer un objet Magasin avec son id
+        public static Magasin getById(int id)
+        {
+            string req = "SELECT * FROM Magasin WHERE id = '" + id + "'";
+            SqlCommand cmd = new SqlCommand(req, Connexion.getInstance());
+            SqlDataReader dr = null;
+            Magasin m = null;
+
+            try
+            {
+                dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    m = new Magasin(int.Parse(dr[0].ToString()), dr[1].ToString(), dr[2].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return m;
+        }
     }
 }
