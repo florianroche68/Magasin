@@ -13,7 +13,10 @@ Il est possible de :
 - Modifier un magasin existant,
 - Supprimer un magasin.
 
-Plus d'info sur l'application dans le Wiki
+Plus d'info sur l'application dans le [Wiki](https://github.com/florianroche68/Magasin/wiki)
+
+***
 
 Développer avec :
 
+Visual Studio, C#, Microsoft SQL Server
