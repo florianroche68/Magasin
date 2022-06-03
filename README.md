@@ -4,7 +4,8 @@ Ce projet est une application Windows, créer en C# sous la technologie ADO.net,
 
 Cette application permet une gestion des magasins d'une base de donnée.
 
-![appli demarrage](https://user-images.githubusercontent.com/83592070/171760090-15c56dee-d4f1-4dbf-b51d-9a10c8f60450.PNG)
+
+![appli demarrage](https://user-images.githubusercontent.com/83592070/171776650-c11f98b4-da22-46fe-a8b1-f19c4b95da7e.PNG)
 
 *** 
 Il est possible de :
