@@ -11,7 +11,8 @@ Il est possible de :
 - Afficher une liste des magasins répertoriés dans la base de données,
 - Créer un nouveau magasin,
 - Modifier un magasin existant,
-- Supprimer un magasin.
+- Supprimer un magasin,
+- Afficher les details d'une commande.
 
 Plus d'info sur l'application dans le [Wiki](https://github.com/florianroche68/Magasin/wiki)
 
