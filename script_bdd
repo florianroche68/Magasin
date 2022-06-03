@@ -1,0 +1,249 @@
+CREATE TABLE  Magasin  (
+   id  INTEGER NOT NULL, 
+   localite  VARCHAR(25) NOT NULL, 
+   gerant  VARCHAR(25), 
+  PRIMARY KEY ( id )
+) 
+
+
+INSERT INTO  magasin  ( id ,  localite ,  gerant ) VALUES (1, 'PARIS 5e', 'BERTON Louis');
+INSERT INTO  magasin  ( id ,  localite ,  gerant ) VALUES (2, 'PARIS 10e', 'JANNEAU Luc');
+INSERT INTO  magasin  ( id ,  localite ,  gerant ) VALUES (3, 'LYON', 'MOUILLARD Marcel');
+INSERT INTO  magasin  ( id ,  localite ,  gerant ) VALUES (4, 'MARSEILLE', 'CAMUS Marius');
+INSERT INTO  magasin  ( id ,  localite ,  gerant ) VALUES (5, 'MONTPELLIER', 'BAIJOT Marc');
+INSERT INTO  magasin  ( id ,  localite ,  gerant ) VALUES (6, 'BORDEAUX', 'DETIENNE Nicole');
+INSERT INTO  magasin  ( id ,  localite ,  gerant ) VALUES (7, 'NANTES', 'DUMONT Henri');
+INSERT INTO  magasin  ( id ,  localite ,  gerant ) VALUES (8, 'TOURS', 'DEMARTEAU Renée');
+INSERT INTO  magasin  ( id ,  localite ,  gerant ) VALUES (9, 'ROUEN', 'NOSSENT Daniel');
+INSERT INTO  magasin  ( id ,  localite ,  gerant ) VALUES (10, 'LILLE', 'NIZET Jean-Luc');
+INSERT INTO  magasin  ( id ,  localite ,  gerant ) VALUES (11, 'BRUXELLES', 'VANDERMISSEN Fernand');
+INSERT INTO  magasin  ( id ,  localite ,  gerant ) VALUES (12, 'LIEGE', 'HANNEAU Vincent');
+
+
+CREATE TABLE  TypeClient  (
+   code  VARCHAR(2) NOT NULL, 
+   libelle  VARCHAR(20) NOT NULL, 
+  PRIMARY KEY ( code ),
+) 
+
+
+
+INSERT INTO  typeClient  ( code ,  libelle ) VALUES ('A', 'Administration');
+INSERT INTO  typeClient  ( code ,  libelle ) VALUES ('GC', 'Grand compte');
+INSERT INTO  typeClient  ( code ,  libelle ) VALUES ('P', 'Particulier');
+INSERT INTO  typeClient  ( code ,  libelle ) VALUES ('PM', 'PME');
+
+
+CREATE TABLE  Fournisseur  (
+   id INTEGER NOT NULL, 
+   nom  VARCHAR(25) NOT NULL, 
+  PRIMARY KEY ( id )
+) 
+
+
+INSERT INTO  fournisseur  ( id ,  nom ) VALUES (1, 'CATIO ELECTRONIC');
+INSERT INTO  fournisseur  ( id ,  nom ) VALUES (2, 'LES STYLOS REUNIS');
+INSERT INTO  fournisseur  ( id ,  nom ) VALUES (3, 'MECANIQUE DE PRECISION');
+INSERT INTO  fournisseur  ( id ,  nom ) VALUES (4, 'SARL ROULAND');
+INSERT INTO  fournisseur  ( id ,  nom ) VALUES (5, 'ELECTROLAMP');
+
+
+CREATE TABLE  Article  (
+   id  INTEGER NOT NULL, 
+   libelle  VARCHAR(25) NOT NULL, 
+   poids  FLOAT NULL DEFAULT 0, 
+   couleur  VARCHAR(20), 
+   stock  INTEGER DEFAULT 0, 
+   prixAchat  FLOAT NOT NULL DEFAULT 0, 
+   prixVente  FLOAT NOT NULL DEFAULT 0, 
+   idFournisseur  INTEGER references Fournisseur, 
+	PRIMARY KEY (id )
+) 
+
+
+
+INSERT INTO  article  ( id ,  libelle ,  poids ,  couleur ,  stock ,  prixAchat ,  prixVente ,  idFournisseur ) VALUES (1, 'Agrafeuse', 150, 'rouge', 10, 20, 29, 4);
+INSERT INTO  article  ( id ,  libelle ,  poids ,  couleur ,  stock ,  prixAchat ,  prixVente ,  idFournisseur ) VALUES (2, 'Calculatrice', 150, 'noir', 200, 235, 25, 1);
+INSERT INTO  article  ( id ,  libelle ,  poids ,  couleur ,  stock ,  prixAchat ,  prixVente ,  idFournisseur ) VALUES (3, 'Cachet-dateur', 150, 'blanc', 3, 21, 30, 4);
+INSERT INTO  article  ( id ,  libelle ,  poids ,  couleur ,  stock ,  prixAchat ,  prixVente ,  idFournisseur ) VALUES (4, 'Lampe', 550, 'rouge', 3, 105, 149, 5);
+INSERT INTO  article  ( id ,  libelle ,  poids ,  couleur ,  stock ,  prixAchat ,  prixVente ,  idFournisseur ) VALUES (5, 'Lampe', 550, 'blanc', 3, 105, 149, 5);
+INSERT INTO  article  ( id ,  libelle ,  poids ,  couleur ,  stock ,  prixAchat ,  prixVente ,  idFournisseur ) VALUES (6, 'Lampe', 550, 'bleu', 3, 105, 149, 5);
+INSERT INTO  article  ( id ,  libelle ,  poids ,  couleur ,  stock ,  prixAchat ,  prixVente ,  idFournisseur ) VALUES (7, 'Lampe', 550, 'vert', 3, 105, 149, 5);
+INSERT INTO  article  ( id ,  libelle ,  poids ,  couleur ,  stock ,  prixAchat ,  prixVente ,  idFournisseur ) VALUES (8, 'Pèse-lettre 1-500', 450, 'gris', 2, 120, 200, 3);
+INSERT INTO  article  ( id ,  libelle ,  poids ,  couleur ,  stock ,  prixAchat ,  prixVente ,  idFournisseur ) VALUES (9, 'Pèse-lettre 1-1000', 500,'gris', 2, 150, 250, 3);
+INSERT INTO  article  ( id ,  libelle ,  poids ,  couleur ,  stock ,  prixAchat ,  prixVente ,  idFournisseur ) VALUES (10, 'Crayon plume', 20, 'rouge', 210, 15, 21, 2);
+INSERT INTO  article  ( id ,  libelle ,  poids ,  couleur ,  stock ,  prixAchat ,  prixVente ,  idFournisseur ) VALUES (11, 'Crayon plume', 20, 'bleu', 190, 15, 30, 2);
+INSERT INTO  article  ( id ,  libelle ,  poids ,  couleur ,  stock ,  prixAchat ,  prixVente ,  idFournisseur ) VALUES (12, 'Crayon à bille', 20, 'rouge', 95, 3, 5, 2);
+INSERT INTO  article  ( id ,  libelle ,  poids ,  couleur ,  stock ,  prixAchat ,  prixVente ,  idFournisseur ) VALUES (13, 'Crayon à bille', 20, 'vert', 90, 3, 5, 2);
+INSERT INTO  article  ( id ,  libelle ,  poids ,  couleur ,  stock ,  prixAchat ,  prixVente ,  idFournisseur ) VALUES (14, 'Crayon à bille', 20, 'bleu', 80, 3, 5, 2);
+INSERT INTO  article  ( id ,  libelle ,  poids ,  couleur ,  stock ,  prixAchat ,  prixVente ,  idFournisseur ) VALUES (15, 'Crayon à bille', 20, 'noir', 450, 3, 5,2);
+INSERT INTO  article  ( id ,  libelle ,  poids ,  couleur ,  stock ,  prixAchat ,  prixVente ,  idFournisseur ) VALUES (16, 'Pack écolier', 400, 'transparent', 3, 282, 300, 2);
+
+
+
+CREATE TABLE  Assemblage  (
+   idCompose  INTEGER NOT NULL references article, 
+   idComposant  INTEGER NOT NULL references article, 
+   quantite  INTEGER NOT NULL DEFAULT 0, 
+  PRIMARY KEY ( idCompose ,  idComposant )
+)
+
+INSERT INTO Assemblage (idCompose, idComposant, quantite) VALUES (16, 1, 1);
+INSERT INTO Assemblage (idCompose, idComposant, quantite) VALUES (16, 2, 1);
+INSERT INTO Assemblage (idCompose, idComposant, quantite) VALUES (16, 11, 1);
+INSERT INTO Assemblage (idCompose, idComposant, quantite) VALUES (16, 12, 1);
+INSERT INTO Assemblage (idCompose, idComposant, quantite) VALUES (16, 13, 1);
+INSERT INTO Assemblage (idCompose, idComposant, quantite) VALUES (16, 14, 1);
+INSERT INTO Assemblage (idCompose, idComposant, quantite) VALUES (16, 15, 1);
+
+
+
+CREATE TABLE  Client  (
+	id INTEGER NOT NULL, 
+    nom  VARCHAR(25) NOT NULL, 
+    prenom  VARCHAR(20), 
+	mail VARCHAR(30),
+    pays  VARCHAR(2) NOT NULL, 
+    localite  VARCHAR(20) NOT NULL, 
+    ca  FLOAT DEFAULT 0, 
+    codeTypeClient  VARCHAR(2) references Typeclient, 
+  PRIMARY KEY ( id )
+) 
+
+
+
+INSERT INTO  client  ( id ,  nom ,  prenom ,  mail, pays ,  localite ,  ca ,  codeTypeClient ) VALUES (1, 'DEFRERE', 'Marc', 'marc.dufrere@free.fr','F', 'PARIS', 806, 'P');
+INSERT INTO  client  ( id ,  nom ,  prenom ,  mail, pays ,  localite ,  ca ,  codeTypeClient ) VALUES (2, 'DECERF', 'Jean','jean.decerf@orange.fr', 'F', 'PARIS', 0, 'P');
+INSERT INTO  client  ( id ,  nom ,  prenom ,  mail, pays ,  localite ,  ca ,  codeTypeClient ) VALUES (3, 'DEFAWE', 'Léon', 'leon.dewarer@sfr.be','B', 'LIEGE', 0, 'P');
+INSERT INTO  client  ( id ,  nom ,  prenom ,  mail, pays ,  localite ,  ca ,  codeTypeClient ) VALUES (4, 'NOSSENT', 'Serge', 'serge.nossent@sfr.be','B', 'BRUXELLES', 149, 'P');
+INSERT INTO  client  ( id ,  nom ,  prenom ,  mail, pays ,  localite ,  ca ,  codeTypeClient ) VALUES (5, 'JACOB', 'Marthe', 'marthe.jacob@yahoo.com','F', 'MARSEILLE', 31, 'A');
+INSERT INTO  client  ( id ,  nom ,  prenom ,  mail, pays ,  localite ,  ca ,  codeTypeClient ) VALUES (6, 'JAMAR', 'Pierre', 'pierre.jamar@teb.be','B', 'LIEGE', 21, 'A');
+INSERT INTO  client  ( id ,  nom ,  prenom ,  mail, pays ,  localite ,  ca ,  codeTypeClient ) VALUES (7, 'DECKERS', 'William', 'william.deckers@free.fr','F', 'LYON', 140, 'GC');
+INSERT INTO  client  ( id ,  nom ,  prenom ,  mail, pays ,  localite ,  ca ,  codeTypeClient ) VALUES (8, 'DECLERCQ', 'Lucien', 'lucien.declercq@teb.be','B', 'BRUXELLES', 349, 'GC');
+INSERT INTO  client  ( id ,  nom ,  prenom ,  mail, pays ,  localite ,  ca ,  codeTypeClient ) VALUES (9, 'DEFYS', 'Maurice', 'maurice.defys@aol.com','F', 'BORDEAUX', 0, 'P');
+INSERT INTO  client  ( id ,  nom ,  prenom ,  mail, pays ,  localite ,  ca ,  codeTypeClient ) VALUES (10, 'DEFOOZ', 'Françis', 'francis.defooz@orange.fr', 'F', 'LILLE', 60, 'P');
+INSERT INTO  client  ( id ,  nom ,  prenom ,  mail, pays ,  localite ,  ca ,  codeTypeClient ) VALUES (11, 'RAMJOIE', 'Victor', 'victore.ramjoie@sfr.fr', 'F', 'NANTES', 0, 'P');
+INSERT INTO  client  ( id ,  nom ,  prenom ,  mail, pays ,  localite ,  ca ,  codeTypeClient ) VALUES (12, 'RENARDY', 'Jean', 'jean.renardy@free.fr', 'F', 'MARSEILLE', 275, 'GC');
+INSERT INTO  client  ( id ,  nom ,  prenom ,  mail, pays ,  localite ,  ca ,  codeTypeClient ) VALUES (13, 'MANTEAU', 'Yvan', 'yvan.manteau@yahoo.com', 'F', 'PARIS', 320, 'GC');
+INSERT INTO  client  ( id ,  nom ,  prenom ,  mail, pays ,  localite ,  ca ,  codeTypeClient ) VALUES (14, 'JONAS', 'Henri', 'henri.jonas@free.fr','F', 'PARIS', 0, 'PM');
+INSERT INTO  client  ( id ,  nom ,  prenom ,  mail, pays ,  localite ,  ca ,  codeTypeClient ) VALUES (15, 'DELVENNE', 'Christian', 'christian.delvenne@gmail.com','F', 'LYON', 0, 'GC');
+INSERT INTO  client  ( id ,  nom ,  prenom ,  mail, pays ,  localite ,  ca ,  codeTypeClient ) VALUES (16, 'DEFEEZ', 'André', 'andre.defeez@gmail.com','F', 'LYON', 0, 'P');
+
+
+
+
+CREATE TABLE  Commande  (
+   id INTEGER NOT NULL, 
+   dateC  DATETIME NOT NULL, 
+   idClient  INTEGER references Client, 
+   idMagasin INTEGER references Magasin, 
+  PRIMARY KEY ( id )
+) 
+
+
+
+INSERT INTO  Commande  ( id ,  dateC ,  idClient ,  idMagasin ) VALUES (1, '2020-06-06 00:00:00', 7, 3);
+INSERT INTO  Commande  ( id ,  dateC ,  idClient ,  idMagasin ) VALUES (2, '2020-06-06 00:00:00', 6, 12);
+INSERT INTO  Commande  ( id ,  dateC ,  idClient ,  idMagasin ) VALUES (3, '2020-06-06 00:00:00', 13, 1);
+INSERT INTO  Commande  ( id ,  dateC ,  idClient ,  idMagasin ) VALUES (4, '2020-06-06 00:00:00', 1, 2);
+INSERT INTO  Commande  ( id ,  dateC ,  idClient ,  idMagasin ) VALUES (5, '2020-06-06 00:00:00', 8, 11);
+INSERT INTO  Commande  ( id ,  dateC ,  idClient ,  idMagasin ) VALUES (6, '2020-07-06 00:00:00', 5, 4);
+INSERT INTO  Commande  ( id ,  dateC ,  idClient ,  idMagasin ) VALUES (7, '2020-07-06 00:00:00', 4, 11);
+INSERT INTO  Commande  ( id ,  dateC ,  idClient ,  idMagasin ) VALUES (8, '2020-08-06 00:00:00', 3, 12);
+INSERT INTO  Commande  ( id ,  dateC ,  idClient ,  idMagasin ) VALUES (9, '2020-08-06 00:00:00', 10, 11);
+INSERT INTO  Commande  ( id ,  dateC ,  idClient ,  idMagasin ) VALUES (10, '2020-09-06 00:00:00', 12, 1);
+INSERT INTO  Commande  ( id ,  dateC ,  idClient ,  idMagasin ) VALUES (11, '2020-10-06 00:00:00', 1, 11);
+INSERT INTO  Commande  ( id ,  dateC ,  idClient ,  idMagasin ) VALUES (12, '2020-10-06 00:00:00', 3, 12);
+
+
+
+CREATE TABLE  LigneCmd  (
+   idCommande INTEGER NOT NULL references Commande, 
+   idArticle INTEGER NOT NULL references Article, 
+   quantite  INTEGER NOT NULL DEFAULT 0, 
+   pv  FLOAT NOT NULL DEFAULT 0, 
+   quantiteLIvree  FLOAT NOT NULL DEFAULT 0,    
+  PRIMARY KEY ( idCommande ,  idArticle )
+) 
+
+
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (1, 4, 1, 29, 1);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (2, 10, 1, 21, 1);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (2, 11, 2, 21, 2);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (2, 14, 3, 5, 3);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (3, 2, 1, 25, 1);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (3, 3, 2, 4, 2);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (3, 13, 1, 30, 1);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (3, 14, 1, 5, 1);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (3, 15, 5, 5, 0);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (4, 2, 4, 25, 0);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (4, 5, 1, 149, 0);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (4, 12, 1, 5, 0);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (4, 13, 10, 140, 0);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (4, 15, 8, 4, 0);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (5, 6, 1, 149, 1);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (5, 8, 1, 200, 1);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (6, 10, 2, 21, 2);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (7, 7, 1, 149, 0);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (8, 1, 1, 200, 0);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (9, 12, 3, 5, 0);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (9, 13, 3, 5, 0);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (9, 14, 3, 5, 0);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (9, 15, 3, 5, 0);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (10,12, 8, 5, 0);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (10,14, 8, 5, 4);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (11,9, 1, 250, 0);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (11,15, 5, 5, 0);
+INSERT INTO  ligneCmd  ( idCommande ,  idArticle ,  quantite ,  pv, quantiteLivree) VALUES (12,3, 4, 25, 0);
+
+
+CREATE TABLE  Livraison  (
+   id  INTEGER NOT NULL, 
+   dateL  DATETIME, 
+   idCommande INTEGER REFERENCES Commande,
+  PRIMARY KEY ( id )
+) 
+
+INSERT INTO  livraison  ( id ,  dateL, idCommande) VALUES (1, '2020-06-10 00:00:00', 1);
+INSERT INTO  livraison  ( id ,  dateL, idCommande) VALUES (2, '2020-06-10 00:00:00', 2);
+INSERT INTO  livraison  ( id ,  dateL, idCommande) VALUES (3, '2020-06-12 00:00:00', 3);
+INSERT INTO  livraison  ( id ,  dateL, idCommande) VALUES (4, '2020-06-06 00:00:00', 3);
+INSERT INTO  livraison  ( id ,  dateL, idCommande) VALUES (5, '2020-06-06 00:00:00', 4);
+INSERT INTO  livraison  ( id ,  dateL, idCommande) VALUES (6, '2020-06-06 00:00:00', 5);
+INSERT INTO  livraison  ( id ,  dateL, idCommande) VALUES (7, '2020-08-06 00:00:00', 6);
+INSERT INTO  livraison  ( id ,  dateL, idCommande) VALUES (8, '2020-08-06 00:00:00', 6);
+INSERT INTO  livraison  ( id ,  dateL, idCommande) VALUES (9, '2020-09-06 00:00:00', 10);
+
+
+
+CREATE TABLE  LigneLiv  (
+   idLivraison INTEGER NOT NULL references livraison, 
+   idArticle  INTEGER NOT NULL references article, 
+   quantite  INTEGER NOT NULL DEFAULT 0, 
+  PRIMARY KEY ( idLivraison ,  idArticle )
+) 
+
+
+
+INSERT INTO  ligneLiv  ( idLivraison ,  idArticle ,  quantite) VALUES (1, 4, 1);
+INSERT INTO  ligneLiv  ( idLivraison ,  idArticle ,  quantite) VALUES (2, 10, 1);
+INSERT INTO  ligneLiv  ( idLivraison ,  idArticle ,  quantite) VALUES (2, 11, 2);
+INSERT INTO  ligneLiv  ( idLivraison ,  idArticle ,  quantite) VALUES (2, 14, 3);
+INSERT INTO  ligneLiv  ( idLivraison ,  idArticle ,  quantite) VALUES (3, 2, 1);
+INSERT INTO  ligneLiv  ( idLivraison ,  idArticle ,  quantite) VALUES (3, 3, 1);
+INSERT INTO  ligneLiv  ( idLivraison ,  idArticle ,  quantite) VALUES (3, 13, 1);
+INSERT INTO  ligneLiv  ( idLivraison ,  idArticle ,  quantite) VALUES (3, 14, 1);
+INSERT INTO  ligneLiv  ( idLivraison ,  idArticle ,  quantite) VALUES (3, 15, 5);
+INSERT INTO  ligneLiv  ( idLivraison ,  idArticle ,  quantite) VALUES (4, 3, 1);
+INSERT INTO  ligneLiv  ( idLivraison ,  idArticle ,  quantite) VALUES (5, 6, 1);
+INSERT INTO  ligneLiv  ( idLivraison ,  idArticle ,  quantite) VALUES (5, 8, 1);
+INSERT INTO  ligneLiv  ( idLivraison ,  idArticle ,  quantite) VALUES (6, 6, 1);
+INSERT INTO  ligneLiv  ( idLivraison ,  idArticle ,  quantite) VALUES (6, 8, 1);
+INSERT INTO  ligneLiv  ( idLivraison ,  idArticle ,  quantite) VALUES (7, 10, 1);
+INSERT INTO  ligneLiv  ( idLivraison ,  idArticle ,  quantite) VALUES (8, 10, 1);
+INSERT INTO  ligneLiv  ( idLivraison ,  idArticle ,  quantite) VALUES (9, 14, 4);
+
+
+
+
+
