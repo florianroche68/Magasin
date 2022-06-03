@@ -17,6 +17,6 @@ Plus d'info sur l'application dans le [Wiki](https://github.com/florianroche68/M
 
 ***
 
-Développer avec :
+## Développer avec :
 
 Visual Studio, C#, Microsoft SQL Server
